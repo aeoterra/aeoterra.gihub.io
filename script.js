@@ -2,7 +2,7 @@ const messages = [
     "Are you sure?",
     "Really sure??",
     "Are you positive?",
-    "Pookie please...",
+    "Baby please...",
     "Just think about it!",
     "If you say no, I will be really sad...",
     "I will be very sad...",
@@ -16,8 +16,15 @@ let messageIndex = 0;
 function handleNoClick() {
     const noButton = document.querySelector('.no-button');
     const yesButton = document.querySelector('.yes-button');
+    
+    if (messageIndex >= 9) {
+        window.location.href = "no_page.html"; // Redirects on the 10th click
+        return;
+    }
+    
     noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
+    messageIndex++;
+    
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
     yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
